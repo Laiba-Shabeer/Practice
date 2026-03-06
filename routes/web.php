@@ -17,3 +17,6 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('register
 
 // register form submit
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])
+    ->name('verify.email');

@@ -47,8 +47,18 @@
                      <form id="formAuthentication" class="mb-6" action="{{ route('register') }}" method="POST">
                          @csrf
                          <div class="mb-6 form-control-validation">
-                             <label for="username" class="form-label">Username</label>
-                             <input type="text" class="form-control" id="username" name="username"
+                             <label for="username" class="form-label">First Name</label>
+                             <input type="text" class="form-control" id="firstname" name="firstname"
+                                 placeholder="Enter your first name" autofocus />
+                         </div>
+                         <div class="mb-6 form-control-validation">
+                             <label for="username" class="form-label">Last Name</label>
+                             <input type="text" class="form-control" id="lastname" name="lastname"
+                                 placeholder="Enter your second name" autofocus />
+                         </div>
+                         <div class="mb-6 form-control-validation">
+                             <label for="username" class="form-label">Address</label>
+                             <input type="text" class="form-control" id="address" name="address"
                                  placeholder="Enter your username" autofocus />
                          </div>
                          <div class="mb-6 form-control-validation">
@@ -60,6 +70,16 @@
                              <label class="form-label" for="password">Password</label>
                              <div class="input-group input-group-merge">
                                  <input type="password" id="password" class="form-control" name="password"
+                                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                     aria-describedby="password" />
+                                 <span class="input-group-text cursor-pointer"><i
+                                         class="icon-base ti tabler-eye-off"></i></span>
+                             </div>
+                         </div>
+                         <div class="mb-6 form-password-toggle form-control-validation">
+                             <label class="form-label" for="password">Confirm Password</label>
+                             <div class="input-group input-group-merge">
+                                 <input type="password" id="password confirmation" class="form-control" name="password confirmation"
                                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                      aria-describedby="password" />
                                  <span class="input-group-text cursor-pointer"><i
@@ -85,29 +105,7 @@
                          </a>
                      </p>
 
-                     <div class="divider my-6">
-                         <div class="divider-text">or</div>
-                     </div>
 
-                     <div class="d-flex justify-content-center">
-                         <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-facebook me-1_5">
-                             <i class="icon-base ti tabler-brand-facebook-filled icon-20px"></i>
-                         </a>
-
-                         <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-twitter me-1_5">
-                             <i class="icon-base ti tabler-brand-twitter-filled icon-20px"></i>
-                         </a>
-
-                         <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-github me-1_5">
-                             <i class="icon-base ti tabler-brand-github-filled icon-20px"></i>
-                         </a>
-
-                         <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-google-plus">
-                             <i class="icon-base ti tabler-brand-google-filled icon-20px"></i>
-                         </a>
-                     </div>
-                 </div>
-             </div>
              <!-- Register Card -->
          </div>
      </div>

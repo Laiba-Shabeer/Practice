@@ -51,13 +51,13 @@
               <form id="formAuthentication" class="mb-4" action="{{ route('login') }}" method="POST">
                  @csrf
                 <div class="mb-6 form-control-validation">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label">Email </label>
                   <input
                     type="email"
                     class="form-control"
                     id="email"
                     name="email"
-                    placeholder="Enter your email or username"
+                    placeholder="Enter your email "
                     autofocus />
                 </div>
                 <div class="mb-6 form-password-toggle form-control-validation">
@@ -97,29 +97,7 @@
                 </a>
               </p>
 
-              <div class="divider my-6">
-                <div class="divider-text">or</div>
-              </div>
 
-              <div class="d-flex justify-content-center">
-                <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-facebook me-1_5">
-                  <i class="icon-base ti tabler-brand-facebook-filled icon-20px"></i>
-                </a>
-
-                <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-twitter me-1_5">
-                  <i class="icon-base ti tabler-brand-twitter-filled icon-20px"></i>
-                </a>
-
-                <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-github me-1_5">
-                  <i class="icon-base ti tabler-brand-github-filled icon-20px"></i>
-                </a>
-
-                <a href="javascript:;" class="btn btn-icon rounded-circle btn-text-google-plus">
-                  <i class="icon-base ti tabler-brand-google-filled icon-20px"></i>
-                </a>
-              </div>
-            </div>
-          </div>
           <!-- /Login -->
         </div>
       </div>
