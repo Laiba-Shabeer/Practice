@@ -1,7 +1,10 @@
 <?php
  use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
+
 // use Illuminate\Support\Facades\Mail;
 
 
@@ -31,3 +34,12 @@ Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])
 //     });
 //     return 'Mail sent!';
 // });
+
+
+Route::get('/forgot-password', [ForgotPasswordController::class,'showForgotForm'])->name('password.request');
+
+Route::post('/forgot-password', [ForgotPasswordController::class,'sendResetLink'])->name('password.email');
+
+Route::get('/reset-password/{token}', [ResetPasswordController::class,'showResetForm'])->name('password.reset');
+
+Route::post('/reset-password', [ResetPasswordController::class,'resetPassword'])->name('password.update');
