@@ -2,6 +2,7 @@
  use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Mail;
 
 
 
@@ -20,3 +21,13 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])
     ->name('verify.email');
+
+
+
+// Route::get('/test-mail', function () {
+//     Mail::raw('Testing Mailpit!', function ($message) {
+//         $message->to('someone@example.com')
+//                 ->subject('Mailpit Test');
+//     });
+//     return 'Mail sent!';
+// });
