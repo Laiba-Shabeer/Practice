@@ -2,8 +2,10 @@
  use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
+
 
 // use Illuminate\Support\Facades\Mail;
 
@@ -35,3 +37,6 @@ Route::post('/reset-password', [ResetPasswordController::class,'resetPassword'])
 Route::middleware('auth')->group(function () {
     Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
 });
+
+// Profile
+Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
