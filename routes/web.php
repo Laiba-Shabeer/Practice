@@ -8,38 +8,30 @@ use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Mail;
 
 
+// Default route
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
-
-Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
-// show login page
+// Login
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-// save values
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-// show register page show
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 
-// register form submit
+// Register
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])
-    ->name('verify.email');
+// Email verify
+Route::get('/verify-email/{token}', [AuthController::class, 'verifyEmail'])->name('verify.email');
 
-
-
-// Route::get('/test-mail', function () {
-//     Mail::raw('Testing Mailpit!', function ($message) {
-//         $message->to('someone@example.com')
-//                 ->subject('Mailpit Test');
-//     });
-//     return 'Mail sent!';
-// });
-
-
+// Forgot & reset password
 Route::get('/forgot-password', [ForgotPasswordController::class,'showForgotForm'])->name('password.request');
-
 Route::post('/forgot-password', [ForgotPasswordController::class,'sendResetLink'])->name('password.email');
-
 Route::get('/reset-password/{token}', [ResetPasswordController::class,'showResetForm'])->name('password.reset');
-
 Route::post('/reset-password', [ResetPasswordController::class,'resetPassword'])->name('password.update');
+
+// Protected routes
+Route::middleware('auth')->group(function () {
+    Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
+});

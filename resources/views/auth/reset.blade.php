@@ -37,17 +37,22 @@
                             passwords</span>
                     </p>
                     @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endif
 
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                    <form id="formAuthentication" action="{{ route('password.update') }}" method="POST">
+                    <form  action="{{ route('password.update') }}" method="POST">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
                         <input type="hidden" name="email" value="{{ request()->email }}">
@@ -64,17 +69,17 @@
                         <div class="mb-6 form-password-toggle form-control-validation">
                             <label class="form-label" for="password_confirmation">Confirm Password</label>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="confirm-password" class="form-control"
-                                    name="confirm-password"
+                                <input type="password" id="password_confirmation" class="form-control"
+                                    name="password_confirmation"
                                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                     aria-describedby="password" />
                                 <span class="input-group-text cursor-pointer"><i
                                         class="icon-base ti tabler-eye-off"></i></span>
                             </div>
                         </div>
-                        <button class="btn btn-primary d-grid w-100 mb-6">Set new password</button>
+                        <button class="btn btn-primary d-grid w-100 mb-6" type="submit">Set new password</button>
                         <div class="text-center">
-                            <a href="auth-login-basic.html" class="d-flex justify-content-center">
+                            <a href="{{ route('login') }}" class="d-flex justify-content-center">
                                 <i class="icon-base ti tabler-chevron-left scaleX-n1-rtl me-1_5"></i>
                                 Back to login
                             </a>
@@ -87,4 +92,13 @@
     </div>
 </div>
 
-@endsection
+
+
+ {{-- <form action="{{ route('password.update') }}" method="POST">
+    @csrf
+    <input type="hidden" name="token" value="{{ $token }}">
+    <input type="hidden" name="email" value="{{ request()->email }}">
+    <input type="password" name="password" placeholder="New Password">
+    <input type="password" name="password_confirmation" placeholder="Confirm Password">
+    <button type="submit">Submit</button>
+</form> --}}
